@@ -7,6 +7,7 @@
 -profile:string
 -group:string
 -works:string
+-avatar:string
 
 ##association
 -has_many:prototypes,comments,likes
@@ -15,7 +16,7 @@
 
 ##table
 -user_id:integer
--proto_id:integer
+-prototype_id:integer
 -content:text
 
 ##association
@@ -25,10 +26,10 @@
 
 ##table
 -user_id:integer
--proto_id:integer
+-prototype_id:integer
 
 ##association
--belongs_to :prototypes :user
+-belongs_to :prototype :user
 
 #Prototypeテーブル
 ##table
@@ -40,8 +41,9 @@
 
 ##table
 -user_id:integer
--proto_id:integer
+-prototype_id:integer
 -image:string
+-role:integer
 
 ##association
 -belongs_to :prototype
