@@ -1,28 +1,47 @@
-== README
+# Userテーブル
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+##table
+-name:string
+-email:string
+-password:string
+-profile:string
+-group:string
+-works:string
 
-Things you may want to cover:
+##association
+-has_many:prototypes,comments,likes
 
-* Ruby version
+# Commentテーブル
 
-* System dependencies
+##table
+-user_id:integer
+-proto_id:integer
+-content:text
 
-* Configuration
+##association
+-belongs_to :user :prototype
 
-* Database creation
+#Likeテーブル
 
-* Database initialization
+##table
+-user_id:integer
+-proto_id:integer
 
-* How to run the test suite
+##association
+-belongs_to :prototypes :user
 
-* Services (job queues, cache servers, search engines, etc.)
+#Prototypeテーブル
+##table
+##association
+-belongs_to :user has_many :comments :likes :capturedimages
 
-* Deployment instructions
 
-* ...
+#Capturedimageテーブル
 
+##table
+-user_id:integer
+-proto_id:integer
+-image:string
 
-Please feel free to use a different markup language if you do not plan to run
-<tt>rake doc:app</tt>.
+##association
+-belongs_to :prototype
