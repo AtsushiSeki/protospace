@@ -8,22 +8,22 @@
           = f.text_field :name, placeholder: 'Username'
           .user-image.col-md-2
           = f.submit "Add image", class: "btn btn-lg btn-primary btn-block"
-          = f.label :type "file"
+          = f.label type: "file"
           = f.text_field :email, id: "email", placeholder: "E-mail adress"
           %input.user-password{type: "password", placeholder: "Password"}/
-          = f.text_field :passeord, type: "password", placeholder: "Password"
+          = f.text_field :password, type: "password", placeholder: "Password"
         .col-md-12
           %h4 Member of
           .user-user-member.row
             .user-name.col-md-12
-             = f.label :text, placeholder: "Member"
+              = f.label :text, placeholder: "Member"
           %h4 Profile
           .user-user-profile.row
             .user-name.col-md-12
-             = f.text_area :textarea, cols: "30", rows: "4", :placeholder "Profile"
+              = f.text_area :profile, size: "30x4", placeholder: "Profile"
           %h4 Works
           .user-name_image.row
             .user-name.col-md-12
-            = f.text_area :textarea, cols: "30", rows: "4", :placeholder "Profile"
+            = f.text_area :work, cols: "30", rows: "4", placeholder: "Works"
       .row.text-center.user-btn
       = f.submit "Submit", class: "btn btn-lg btn-primary btn-block"
