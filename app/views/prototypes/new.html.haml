@@ -6,26 +6,32 @@
         /%input.proto-new-title{type: "text", placeholder: "Title"}/
     .row
       .col-md-12
+        = f.fields_for :capturedimages do |main_image|
         .cover-image-upload
-          %input{type: "file"}/
+          =main_image.file_field :photo
+          =main_image.hidden_field :role value: "main", required: true
+
       .col-md-12
         %ul.proto-sub-list.list-group
+          = f.fields_for :capturedimages do |sub_image|
           %li.list-group-item.col-md-4
             .image-upload
-              %input{type: "file"}/
+              = sub_image.file_field :photo
+              = sub_image.hidden_field :role, value: "sub"
           %li.list-group-item.col-md-4
+            = f.fields_for :capturedimages do |sub_image|
             .image-upload
-              %input{type: "file"}/
+              = sub_image.file_field :photo
+              = sub_image.hidden_field :role, value: "sub"
           %li.list-group-item.col-md-4
             .image-upload-plus
               %span +
     .row.proto-description
       .col-md-12
         =f.text_field :catch_copy, placeholder: "Catch_copy"
-        /%input{type: "text", placeholder: "Catch Copy"}/
       .col-md-12
         = f.text_area :concept, placeholder: "Concept", cols: "30", rows: "4"
-        /%textarea{name: "", cols: "30", rows: "4", placeholder: "Concept"}
+
       .col-md-12
         %h4 Tag List
         .row
@@ -37,4 +43,4 @@
             %input{type: "text", placeholder: "Application"}/
     .row.text-center.proto-btn
       f.submit "Publish", class: "btn btn-lg btn-primary btn-block"
-      / %button.btn.btn-lg.btn-primary.btn-block{type: "submit"} Publish
+
