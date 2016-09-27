@@ -8,11 +8,12 @@ class PrototypesController < ApplicationController
 
   def new
     @prototype = Prototype.new
-    @prototype.captured_images.build
+    @prototype.capturedimages.build
   end
 
   def create
     @prototype = @Prototype.create(create_params)
+  end
 
     def destroy
     @prototype = Prototype.find(params[:id])

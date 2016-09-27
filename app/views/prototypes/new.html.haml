@@ -7,22 +7,22 @@
     .row
       .col-md-12
         = f.fields_for :capturedimages do |main_image|
-        .cover-image-upload
-          =main_image.file_field :photo
-          =main_image.hidden_field :role value: "main", required: true
+          .cover-image-upload
+            =main_image.file_field :photo, required: true
+            =main_image.hidden_field :role, value: "main"
 
       .col-md-12
         %ul.proto-sub-list.list-group
           = f.fields_for :capturedimages do |sub_image|
-          %li.list-group-item.col-md-4
-            .image-upload
-              = sub_image.file_field :photo
-              = sub_image.hidden_field :role, value: "sub"
+            %li.list-group-item.col-md-4
+              .image-upload
+                = sub_image.file_field :photo
+                = sub_image.hidden_field :role, value: "sub"
           %li.list-group-item.col-md-4
             = f.fields_for :capturedimages do |sub_image|
-            .image-upload
-              = sub_image.file_field :photo
-              = sub_image.hidden_field :role, value: "sub"
+              .image-upload
+                = sub_image.file_field :photo
+                = sub_image.hidden_field :role, value: "sub"
           %li.list-group-item.col-md-4
             .image-upload-plus
               %span +
