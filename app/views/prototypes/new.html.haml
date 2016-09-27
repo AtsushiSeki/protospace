@@ -1,28 +1,37 @@
-%form.container.proto-new{action: ""}
+= form_for @prototype do |f|
   .col-md-8.col-md-offset-2
     %header.row.user-nav.row
       .col-md-12
-        %input.proto-new-title{type: "text", placeholder: "Title"}/
+        = f.text_field :title, placeholder: "Title", class: "proto-new-title"
+        /%input.proto-new-title{type: "text", placeholder: "Title"}/
     .row
       .col-md-12
-        .cover-image-upload
-          %input{type: "file"}/
+        = f.fields_for :capturedimages do |main_image|
+          .cover-image-upload
+            =main_image.file_field :photo, required: true
+            =main_image.hidden_field :role, value: "main"
+
       .col-md-12
         %ul.proto-sub-list.list-group
+          = f.fields_for :capturedimages do |sub_image|
+            %li.list-group-item.col-md-4
+              .image-upload
+                = sub_image.file_field :photo
+                = sub_image.hidden_field :role, value: "sub"
           %li.list-group-item.col-md-4
-            .image-upload
-              %input{type: "file"}/
-          %li.list-group-item.col-md-4
-            .image-upload
-              %input{type: "file"}/
+            = f.fields_for :capturedimages do |sub_image|
+              .image-upload
+                = sub_image.file_field :photo
+                = sub_image.hidden_field :role, value: "sub"
           %li.list-group-item.col-md-4
             .image-upload-plus
               %span +
     .row.proto-description
       .col-md-12
-        %input{type: "text", placeholder: "Catch Copy"}/
+        =f.text_field :catch_copy, placeholder: "Catch_copy"
       .col-md-12
-        %textarea{name: "", cols: "30", rows: "4", placeholder: "Concept"}
+        = f.text_area :concept, placeholder: "Concept", cols: "30", rows: "4"
+
       .col-md-12
         %h4 Tag List
         .row
@@ -33,4 +42,5 @@
           .col-md-3
             %input{type: "text", placeholder: "Application"}/
     .row.text-center.proto-btn
-      %button.btn.btn-lg.btn-primary.btn-block{type: "submit"} Publish
+      f.submit "Publish", class: "btn btn-lg btn-primary btn-block"
+
