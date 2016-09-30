@@ -21,8 +21,8 @@
           %li.list-group-item.col-md-4
             = f.fields_for :capturedimages do |sub_image|
               .image-upload
-                = sub_image.file_field :photo
-                = sub_image.hidden_field :role, value: "sub"
+              = sub_image.file_field :photo
+              = sub_image.hidden_field :role, value: "sub"
           %li.list-group-item.col-md-4
             .image-upload-plus
               %span +
