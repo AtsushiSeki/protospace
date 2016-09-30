@@ -1,10 +1,13 @@
 class PrototypesController < ApplicationController
+  before_action :set_prototype, only :show
 
   def index
     @prototype =Prototype.includes(:user)
   end
 
   def show
+    @user = @prototype.user
+    @sub_images = @prototype.capturedimages.sub
   end
 
   def new
@@ -34,6 +37,10 @@ class PrototypesController < ApplicationController
       :photo,
       :role]
       ).merge(user_id: current_user.id)
+  end
+
+  def set_prototype
+    @prototype = Prototype.find(params[:id])
   end
 
 
